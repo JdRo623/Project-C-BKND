@@ -8,9 +8,9 @@ exports.sendEmail = async (email, subject, payload, template) => {
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
       service: "Gmail",
-      host: "smtp.gmail.com",
-      secure: true,
-      port: 465,
+      //host: "smtp.gmail.com",
+     // secure: true,
+     // port: 465,
       auth: {
         user: "consent.dev.es@gmail.com",
         pass: "jqwb xrty nfcu bzcq", // naturally, replace both with your real credentials or an application-specific password
@@ -31,6 +31,7 @@ exports.sendEmail = async (email, subject, payload, template) => {
     // Send email
     transporter.sendMail(options(), (error, info) => {
       if (error) {
+        console.log(error)
         return error;
       } else {
         return res.status(200).json({
@@ -39,6 +40,7 @@ exports.sendEmail = async (email, subject, payload, template) => {
       }
     });
   } catch (error) {
+    console.log(error)
     return error;
   }
 };
