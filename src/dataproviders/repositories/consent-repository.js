@@ -35,7 +35,8 @@ exports.getConsentRepository = async filters => {
         errorCode: '400',
     };
     try {
-        response = await Consent.find({
+        response.errorCode = '200'
+        response.consentList = await Consent.find({
             $or: filters,
         })
     } catch (error) {

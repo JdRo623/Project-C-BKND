@@ -21,7 +21,7 @@ exports.sendEmail = async (email, subject, payload, template) => {
     const compiledTemplate = handlebars.compile(source);
     const options = () => {
       return {
-        from: process.env.FROM_EMAIL,
+        from: "consent.dev.es@gmail.com",
         to: email,
         subject: subject,
         html: compiledTemplate(payload),
