@@ -13,7 +13,7 @@ exports.sendEmail = async (email, subject, payload, template) => {
       port: 587,
       auth: {
         user: "consent.dev.es@gmail.com",
-        pass: "bwvj qkmq zywp funx", // naturally, replace both with your real credentials or an application-specific password
+        pass: "jevt mdxy lzxz ienr", // naturally, replace both with your real credentials or an application-specific password
       },
     });
 
