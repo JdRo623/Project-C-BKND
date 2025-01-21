@@ -10,6 +10,8 @@ exports.createConsentRepository = async req => {
         date: Date(),
         id_user_s: req.id_user_s,
         id_user_r: req.id_user_r,
+        email_user_s: req.email_user_s,
+        email_user_r: req.email_user_r,
         status: 'FV',
     });
     try {

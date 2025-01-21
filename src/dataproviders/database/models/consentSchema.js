@@ -12,6 +12,14 @@ const Consent = new mongoose.Schema({
     type: String,
     required: true,
   },
+  email_user_s: {
+    type: String,
+    required: true,
+  },
+  email_user_r: {
+    type: String,
+    required: true,
+  },
   status: { //FV: FIRST_VALIDATION - SV: SECOND_VALIDATION - R - A
     type: String, 
     required: true,

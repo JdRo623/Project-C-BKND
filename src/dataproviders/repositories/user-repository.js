@@ -61,3 +61,27 @@ exports.updateUser = async (filter, update) => {
     }
 
 };
+
+
+exports.deleteUser = async (filter) => {
+    try {
+        const val = await ConsentUser.deleteOne(filter)
+        if(val.deletedCount == 0){
+            return {
+                msg: 'Intentelo nuevamente',
+                errorCode: '400',
+            }
+        }
+        return response = {
+            msg: 'Usuario eliminado exitosamente',
+            errorCode: '200',
+        };
+
+    } catch (error) {
+        return {
+            msg: error,
+            errorCode: '500',
+        };
+    }
+
+};
