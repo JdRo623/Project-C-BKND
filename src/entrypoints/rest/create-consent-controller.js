@@ -1,5 +1,7 @@
 const { createConsentRepository } = require('../../dataproviders/repositories/consent-repository');
-const { findUser } = require('../../dataproviders/repositories/user-repository');
+const { findUser, updateUser } = require('../../dataproviders/repositories/user-repository');
+const { repository } = require('../../dataproviders/repositories/code-repository');
+
 exports.controller = async (req, res) => {
     var response = {
         msg: 'Ha ocurrido un error, por favor inténtalo nuevamente.',
@@ -22,6 +24,11 @@ exports.controller = async (req, res) => {
         email_user_r: user.email
     }
     response = await createConsentRepository(consentInfo);
-
+    await updateUser(
+        {
+            _id: id_user_s,
+        },
+        { consentCode: await repository(), consentCodeDate: Date() }
+    );
     return res.status(response.errorCode).json(response);
 };
