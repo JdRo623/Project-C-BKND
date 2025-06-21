@@ -38,9 +38,11 @@ exports.getConsentRepository = async filters => {
     };
     try {
         response.errorCode = '200'
-        response.consentList = await Consent.find({
-            $or: filters,
-        })
+        
+        // Handle both array filters (backward compatibility) and complex filter objects
+        const query = Array.isArray(filters) ? { $or: filters } : filters;
+        
+        response.consentList = await Consent.find(query)
     } catch (error) {
         response = {
             msg: 'Error: ' + error,
